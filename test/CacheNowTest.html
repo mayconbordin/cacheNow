@@ -1,0 +1,40 @@
+<script type="text/javascript" src="CacheNow.js"></script>
+<script type="text/javascript">
+window.onload = function() {
+	// Create a new instance of CacheNow
+	var cache = new CacheNow('id');
+	
+	// Add objects to the cache
+	cache.add(
+		[
+			{id:1, name:'John'},
+			{id:2, name:'Mike'},
+			{id:3, name:'Locke'},
+			{id:4, name:'Luis'},
+			{id:5, name:'José'}
+		],
+		
+		// This is the query object used to retrieve 
+		// the objects above from other source.
+		// The idea is that if this query is called again the app can check
+		// first in cache if it have been alreaady called, then it doesn't need
+		// to retrieve the data from the source, instead it get it from cache.
+		{minDate:'2011-08-01', maxDate:'2011-08-05'});
+	
+	// Updating existing objects, these will overwrite the old ones
+	// using the merge function, it means that this objects can have
+	// more properties, they will be cached
+	cache.add([
+		{id:2, name:'Mike'},
+		{id:3, name:'Locke'}
+	], {day: 10});
+	
+	// Here it is retrieving the objects from the giving query
+	// if nothing is found, then it will return an empty array
+	// Remembering that one object can be associated with many queries
+	console.log(cache.query({minDate:'2011-08-01', maxDate:'2011-08-05'}));
+	
+	// Printing the whole cache array
+	console.log(cache.store_);
+};
+</script>
