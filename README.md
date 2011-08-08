@@ -4,7 +4,7 @@ Basically, this script is meant to store objects and optionally relate them to
 a query. You can't perform queries, but you can store objects from a query that
 you did. You can then retrieve the objects of an specific query.
 
-## Exemplo
+## Example
 
      // Create an instance of the CacheNow.
      // The 'id' string is the identifier property
